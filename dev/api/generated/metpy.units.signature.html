@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>gridding &mdash; MetPy 0.11.0</title>
+  <title>signature &mdash; MetPy 0.11.1</title>
   
 
   
@@ -17,7 +17,7 @@
   
   
   
-    <link rel="canonical" href="https://unidata.github.io/MetPy/latest/api/generated/metpy.gridding.html"/>
+    <link rel="canonical" href="https://unidata.github.io/MetPy/latest/api/generated/metpy.units.signature.html"/>
   
 
   
@@ -43,10 +43,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MetPy 0.11.0" href="../../index.html"/>
-        <link rel="up" title="Reference Guide" href="../index.html"/>
-        <link rel="next" title="interpolate" href="metpy.gridding.interpolate.html"/>
-        <link rel="prev" title="remove_repeat_coordinates" href="metpy.interpolate.remove_repeat_coordinates.html"/> 
+    <link rel="top" title="MetPy 0.11.1" href="../../index.html"/>
+        <link rel="up" title="units" href="metpy.units.html"/>
+        <link rel="next" title="DimensionalityError" href="metpy.units.DimensionalityError.html"/>
+        <link rel="prev" title="pandas_dataframe_to_unit_arrays" href="metpy.units.pandas_dataframe_to_unit_arrays.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -81,7 +81,7 @@
                 
                   <div class="version-dropdown">
                     <select class="version-list" id="version-list">
-                      <option value=''>0.11.0</option>
+                      <option value=''>0.11.1</option>
                       
                         
                           <option value="../latest">latest</option>
@@ -126,21 +126,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="metpy.constants.html">constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metpy.units.html">units</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="metpy.units.html">units</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="metpy.units.atleast_1d.html">atleast_1d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metpy.units.atleast_2d.html">atleast_2d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metpy.units.check_units.html">check_units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metpy.units.concatenate.html">concatenate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metpy.units.diff.html">diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metpy.units.masked_array.html">masked_array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metpy.units.pandas_dataframe_to_unit_arrays.html">pandas_dataframe_to_unit_arrays</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metpy.units.DimensionalityError.html">DimensionalityError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metpy.units.UndefinedUnitError.html">UndefinedUnitError</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="metpy.io.html">io</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metpy.calc.html">calc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metpy.plots.html">plots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metpy.plots.ctables.html">ctables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metpy.interpolate.html">interpolate</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">gridding</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="metpy.gridding.interpolate.html">interpolate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="metpy.gridding.inverse_distance.html">inverse_distance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="metpy.gridding.natural_neighbor.html">natural_neighbor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="metpy.gridding.remove_nan_observations.html">remove_nan_observations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="metpy.gridding.remove_observations_below_value.html">remove_observations_below_value</a></li>
-<li class="toctree-l3"><a class="reference internal" href="metpy.gridding.remove_repeat_coordinates.html">remove_repeat_coordinates</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="metpy.xarray.html">xarray</a></li>
 </ul>
 </li>
@@ -198,7 +201,9 @@
         
           <li><a href="../index.html">Reference Guide</a> &raquo;</li>
         
-      <li>gridding</li>
+          <li><a href="metpy.units.html">units</a> &raquo;</li>
+        
+      <li>signature</li>
     
     
     <li class="source-link">
@@ -206,7 +211,7 @@
             
                 
                 
-                <a href="https://github.com/Unidata/MetPy/issues/new?title=Suggested%20improvement%20for%20api/generated/metpy.gridding&body=Please%20describe%20what%20could%20be%20improved%20about%20this%20page%20or%20the%20typo/mistake%20that%20you%20found%3A"
+                <a href="https://github.com/Unidata/MetPy/issues/new?title=Suggested%20improvement%20for%20api/generated/metpy.units.signature&body=Please%20describe%20what%20could%20be%20improved%20about%20this%20page%20or%20the%20typo/mistake%20that%20you%20found%3A"
                    class="fa fa-github"> Improve this page</a>
             
         
@@ -220,38 +225,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-metpy.gridding">
-<span id="gridding"></span><h1>gridding<a class="headerlink" href="#module-metpy.gridding" title="Permalink to this headline">¶</a></h1>
-<p>Provides tools for interpolating irregularly spaced data onto a regular grid.</p>
-<p>Deprecated in 0.9 in favor of the more general <a class="reference internal" href="metpy.gridding.interpolate.html#metpy.gridding.interpolate" title="metpy.gridding.interpolate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate</span></code></a> subpackage.</p>
-<p class="rubric">Functions</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="metpy.gridding.interpolate.html#metpy.gridding.interpolate" title="metpy.gridding.interpolate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interpolate</span></code></a>(x, y, z[, interp_type, hres, …])</p></td>
-<td><p>Interpolate given (x,y), observation (z) pairs to a grid based on given parameters.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="metpy.gridding.inverse_distance.html#metpy.gridding.inverse_distance" title="metpy.gridding.inverse_distance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverse_distance</span></code></a>(xp, yp, variable, grid_x, …)</p></td>
-<td><p>Generate an inverse distance interpolation of the given points to a regular grid.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="metpy.gridding.natural_neighbor.html#metpy.gridding.natural_neighbor" title="metpy.gridding.natural_neighbor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">natural_neighbor</span></code></a>(xp, yp, variable, grid_x, …)</p></td>
-<td><p>Generate a natural neighbor interpolation of the given points to a regular grid.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="metpy.gridding.remove_nan_observations.html#metpy.gridding.remove_nan_observations" title="metpy.gridding.remove_nan_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nan_observations</span></code></a>(x, y, z)</p></td>
-<td><p>Remove all x, y, and z where z is nan.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="metpy.gridding.remove_observations_below_value.html#metpy.gridding.remove_observations_below_value" title="metpy.gridding.remove_observations_below_value"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_observations_below_value</span></code></a>(x, y, z[, val])</p></td>
-<td><p>Remove all x, y, and z where z is less than val.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="metpy.gridding.remove_repeat_coordinates.html#metpy.gridding.remove_repeat_coordinates" title="metpy.gridding.remove_repeat_coordinates"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_repeat_coordinates</span></code></a>(x, y, z)</p></td>
-<td><p>Remove all x, y, and z where (x,y) is repeated and keep the first occurrence only.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
+  <div class="section" id="signature">
+<h1>signature<a class="headerlink" href="#signature" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="metpy.units.signature">
+<code class="sig-prename descclassname">metpy.units.</code><code class="sig-name descname">signature</code><span class="sig-paren">(</span><em class="sig-param">obj</em>, <em class="sig-param">*</em>, <em class="sig-param">follow_wrapped=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/inspect.html#signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metpy.units.signature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a signature object for the passed callable.</p>
+</dd></dl>
+
+<div style='clear:both'></div></div>
 
 
            </div>
@@ -263,10 +245,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="metpy.gridding.interpolate.html" class="btn btn-neutral float-right" title="interpolate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="metpy.units.DimensionalityError.html" class="btn btn-neutral float-right" title="DimensionalityError" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="metpy.interpolate.remove_repeat_coordinates.html" class="btn btn-neutral" title="remove_repeat_coordinates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="metpy.units.pandas_dataframe_to_unit_arrays.html" class="btn btn-neutral" title="pandas_dataframe_to_unit_arrays" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -276,7 +258,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2019, MetPy Developers. Development supported by National Science Foundation grants AGS-1344155, OAC-1740315, and AGS-1901712..
-      Last updated on Oct 17, 2019 at 22:26:15.
+      Last updated on Nov 14, 2019 at 01:28:52.
 
     </p>
   </div>
@@ -313,7 +295,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.11.0.post28+g8c1ca0a',
+            VERSION:'0.11.1.post48+ga5068d5',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
