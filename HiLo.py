@@ -5,9 +5,8 @@
 
 def plot_maxmin_points(ax,lon, lat, data, extrema, nsize, symbol,color='k', outline_color='k',
                        outline_width=2.5, press_spacing=0.66,plotValue=True, transform=None):
-
     """
-    ax argument allows for sending current axis to the HiLo plot
+    Ax argument allows for sending current axis to the HiLo plot.
 
     Path effects on the symbols and pressure readings - outline them in black (default) with linewidth
     2.5 (default) to make them pop a bit more. The press_spacing (0.66 default) is based off latitude and helps
@@ -43,7 +42,7 @@ def plot_maxmin_points(ax,lon, lat, data, extrema, nsize, symbol,color='k', outl
         raise ValueError('Value for hilo must be either max or min')
 
     mxy, mxx = np.where(data_ext == data)
-    
+
     for i in range(len(mxy)):
         A = ax.text(lon[mxy[i], mxx[i]], lat[mxy[i], mxx[i]], symbol, color=color, size=24,
                     clip_on=True, horizontalalignment='center', verticalalignment='center',
