@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_examples_plots_Combined_plotting.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_examples_plots_Combined_plotting.py:
+        Click :ref:`here <sphx_glr_download_examples_plots_Combined_plotting.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_plots_Combined_plotting.py:
 
 
 Combined Plotting
@@ -33,6 +35,7 @@ Also shows how to control the maps that are plotted. Plots sample NARR data.
 
 
 
+
 Create a contour plot of temperature
 
 
@@ -51,6 +54,7 @@ Create a contour plot of temperature
 
 
 
+
 Create an image plot of Geopotential height
 
 
@@ -60,6 +64,7 @@ Create an image plot of Geopotential height
     img.data = narr
     img.field = 'Geopotential_height'
     img.level = 850 * units.hPa
+
 
 
 
@@ -87,6 +92,7 @@ Plot the data on a map
 
 
 .. image:: /examples/plots/images/sphx_glr_Combined_plotting_001.png
+    :alt: NARR Example
     :class: sphx-glr-single-img
 
 
@@ -96,17 +102,24 @@ Plot the data on a map
 
  .. code-block:: none
 
-    /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: http://naciscdn.org/naturalearth/110m/physical/ne_110m_land.zip
+    /opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_ocean.zip
       warnings.warn('Downloading: {}'.format(url), DownloadWarning)
-    /home/travis/virtualenv/python3.7.1/lib/python3.7/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: http://naciscdn.org/naturalearth/110m/physical/ne_110m_rivers_lake_centerlines.zip
+    /opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_land.zip
       warnings.warn('Downloading: {}'.format(url), DownloadWarning)
+    /opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip
+      warnings.warn('Downloading: {}'.format(url), DownloadWarning)
+    /opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_1_states_provinces_lakes.zip
+      warnings.warn('Downloading: {}'.format(url), DownloadWarning)
+    /opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/cartopy/io/__init__.py:260: DownloadWarning: Downloading: https://naciscdn.org/naturalearth/110m/physical/ne_110m_rivers_lake_centerlines.zip
+      warnings.warn('Downloading: {}'.format(url), DownloadWarning)
+
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  5.538 seconds)
+   **Total running time of the script:** ( 0 minutes  3.833 seconds)
 
 
 .. _sphx_glr_download_examples_plots_Combined_plotting.py:
@@ -119,13 +132,13 @@ Plot the data on a map
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: Combined_plotting.py <Combined_plotting.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: Combined_plotting.ipynb <Combined_plotting.ipynb>`
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>metpy.plots._util &mdash; MetPy 0.11.1</title>
+  <title>metpy.plots._util &mdash; MetPy 0.0</title>
   
 
   
@@ -34,16 +34,20 @@
   
 
   
+    <link rel="stylesheet" href="../../../_static/theme_override.css" type="text/css" />
+  
     <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
   
-    <link rel="stylesheet" href="../../../_static/theme_override.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/gallery-binder.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/gallery-dataframe.css" type="text/css" />
   
 
   
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="MetPy 0.11.1" href="../../../index.html"/>
+    <link rel="top" title="MetPy 0.0" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -79,7 +83,7 @@
                 
                   <div class="version-dropdown">
                     <select class="version-list" id="version-list">
-                      <option value=''>0.11.1</option>
+                      <option value=''>0.0</option>
                       
                         
                           <option value="../latest">latest</option>
@@ -119,8 +123,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../installguide.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../startingguide.html">Getting Started with MetPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../units.html">Unit Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Reference/API Examples</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://unidata.github.io/python-gallery/examples/index.html">Topical Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://unidata.github.io/python-training/gallery/gallery-home">Python Gallery (separate site)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Reference Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">MetPy Roadmap</a></li>
@@ -198,16 +202,14 @@
 <span class="c1"># SPDX-License-Identifier: BSD-3-Clause</span>
 <span class="sd">&quot;&quot;&quot;Utilities for use in making plots.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
-<span class="kn">import</span> <span class="nn">posixpath</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="k">import</span> <span class="n">LineCollection</span>
+<span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
 <span class="kn">import</span> <span class="nn">matplotlib.patheffects</span> <span class="k">as</span> <span class="nn">mpatheffects</span>
-<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="n">imread</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">imread</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pkg_resources</span>
 
-<span class="kn">from</span> <span class="nn">..units</span> <span class="k">import</span> <span class="n">concatenate</span>
+<span class="kn">from</span> <span class="nn">..units</span> <span class="kn">import</span> <span class="n">concatenate</span>
 
 
 <div class="viewcode-block" id="add_timestamp"><a class="viewcode-back" href="../../../api/generated/metpy.plots.add_timestamp.html#metpy.plots.add_timestamp">[docs]</a><span class="k">def</span> <span class="nf">add_timestamp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">high_contrast</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -281,17 +283,22 @@
 <span class="sd">       The `matplotlib.image.FigureImage` instance created</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">importlib.resources</span> <span class="kn">import</span> <span class="n">files</span> <span class="k">as</span> <span class="n">importlib_resources_files</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># Can remove when we require Python &gt; 3.8</span>
+        <span class="kn">from</span> <span class="nn">importlib_resources</span> <span class="kn">import</span> <span class="n">files</span> <span class="k">as</span> <span class="n">importlib_resources_files</span>
+
     <span class="n">fname_suffix</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;small&#39;</span><span class="p">:</span> <span class="s1">&#39;_75x75.png&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;large&#39;</span><span class="p">:</span> <span class="s1">&#39;_150x150.png&#39;</span><span class="p">}</span>
     <span class="n">fname_prefix</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;unidata&#39;</span><span class="p">:</span> <span class="s1">&#39;unidata&#39;</span><span class="p">,</span>
                     <span class="s1">&#39;metpy&#39;</span><span class="p">:</span> <span class="s1">&#39;metpy&#39;</span><span class="p">}</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">fname</span> <span class="o">=</span> <span class="n">fname_prefix</span><span class="p">[</span><span class="n">which</span><span class="p">]</span> <span class="o">+</span> <span class="n">fname_suffix</span><span class="p">[</span><span class="n">size</span><span class="p">]</span>
-        <span class="n">fpath</span> <span class="o">=</span> <span class="n">posixpath</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;_static&#39;</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown logo size or selection&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown logo size or selection&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
 
-    <span class="n">logo</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">pkg_resources</span><span class="o">.</span><span class="n">resource_stream</span><span class="p">(</span><span class="s1">&#39;metpy.plots&#39;</span><span class="p">,</span> <span class="n">fpath</span><span class="p">))</span>
+    <span class="k">with</span> <span class="p">(</span><span class="n">importlib_resources_files</span><span class="p">(</span><span class="s1">&#39;metpy.plots&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="s1">&#39;_static&#39;</span> <span class="o">/</span> <span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
+        <span class="n">logo</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fig</span><span class="o">.</span><span class="n">figimage</span><span class="p">(</span><span class="n">logo</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 
@@ -489,8 +496,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, MetPy Developers. Development supported by National Science Foundation grants AGS-1344155, OAC-1740315, and AGS-1901712..
-      Last updated on Nov 14, 2019 at 01:28:52.
+        &copy; Copyright 2008-2020, MetPy Developers. Development supported by National Science Foundation grants AGS-1344155, OAC-1740315, and AGS-1901712..
+      Last updated on Oct 27, 2020 at 15:11:11.
 
     </p>
   </div>
@@ -506,9 +513,6 @@
   ga('send', 'pageview');
 </script>
 <script>var version_json_loc = "../../../../versions.json";</script>
-<p>Do you enjoy using MetPy?
-  <a href="https://saythanks.io/to/unidata" class="btn btn-neutral" title="Say Thanks!" accesskey="n">Say Thanks!</a>
-</p>
 
 
 </footer>
@@ -527,7 +531,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.11.1.post48+ga5068d5',
+            VERSION:'0.0.post586+gd5e1416',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -540,7 +544,8 @@
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
       <script type="text/javascript" src="../../../_static/language_data.js"></script>
       <script type="text/javascript" src="../../../_static/pop_ver.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../../../None"></script>
 
   
 

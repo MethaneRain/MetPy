@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_examples_calculations_Angle_to_Direction.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_examples_calculations_Angle_to_Direction.py:
+        Click :ref:`here <sphx_glr_download_examples_calculations_Angle_to_Direction.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_calculations_Angle_to_Direction.py:
 
 
 Angle to Direction
@@ -20,6 +22,7 @@ It also  demonstrates the function's flexibility.
 
     import metpy.calc as mpcalc
     from metpy.units import units
+
 
 
 
@@ -49,6 +52,7 @@ Create a test value of an angle
 
 
 
+
 Now throw that angle into the function to
 get the corresponding direction
 
@@ -69,6 +73,7 @@ get the corresponding direction
  .. code-block:: none
 
     ENE
+
 
 
 
@@ -97,6 +102,7 @@ and defaulting to degrees if no units are specified.
 
 
 
+
 If you want the unabbrieviated version, input full=True
 
 
@@ -119,9 +125,10 @@ If you want the unabbrieviated version, input full=True
 
 
 
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.076 seconds)
+   **Total running time of the script:** ( 0 minutes  0.004 seconds)
 
 
 .. _sphx_glr_download_examples_calculations_Angle_to_Direction.py:
@@ -134,13 +141,13 @@ If you want the unabbrieviated version, input full=True
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: Angle_to_Direction.py <Angle_to_Direction.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: Angle_to_Direction.ipynb <Angle_to_Direction.ipynb>`
 

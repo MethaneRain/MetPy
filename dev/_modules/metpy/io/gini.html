@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>metpy.io.gini &mdash; MetPy 0.11.1</title>
+  <title>metpy.io.gini &mdash; MetPy 0.0</title>
   
 
   
@@ -34,16 +34,20 @@
   
 
   
+    <link rel="stylesheet" href="../../../_static/theme_override.css" type="text/css" />
+  
     <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
   
-    <link rel="stylesheet" href="../../../_static/theme_override.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/gallery-binder.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/gallery-dataframe.css" type="text/css" />
   
 
   
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="MetPy 0.11.1" href="../../../index.html"/>
+    <link rel="top" title="MetPy 0.0" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -79,7 +83,7 @@
                 
                   <div class="version-dropdown">
                     <select class="version-list" id="version-list">
-                      <option value=''>0.11.1</option>
+                      <option value=''>0.0</option>
                       
                         
                           <option value="../latest">latest</option>
@@ -119,8 +123,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../installguide.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../startingguide.html">Getting Started with MetPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../units.html">Unit Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Reference/API Examples</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://unidata.github.io/python-gallery/examples/index.html">Topical Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://unidata.github.io/python-training/gallery/gallery-home">Python Gallery (separate site)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Reference Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">MetPy Roadmap</a></li>
@@ -199,23 +203,20 @@
 <span class="sd">&quot;&quot;&quot;Tools to process GINI-formatted products.&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">contextlib</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">enum</span> <span class="k">import</span> <span class="n">Enum</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="k">import</span> <span class="n">BytesIO</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">repeat</span>  <span class="c1"># noqa: I202</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">repeat</span>  <span class="c1"># noqa: I202</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">xarray</span> <span class="k">import</span> <span class="n">Variable</span>
-<span class="kn">from</span> <span class="nn">xarray.backends.common</span> <span class="k">import</span> <span class="n">AbstractDataStore</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">xarray.core.utils</span> <span class="k">import</span> <span class="n">FrozenDict</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">xarray.core.utils</span> <span class="k">import</span> <span class="n">FrozenOrderedDict</span> <span class="k">as</span> <span class="n">FrozenDict</span>
+<span class="kn">from</span> <span class="nn">xarray</span> <span class="kn">import</span> <span class="n">Variable</span>
+<span class="kn">from</span> <span class="nn">xarray.backends.common</span> <span class="kn">import</span> <span class="n">AbstractDataStore</span>
+<span class="kn">from</span> <span class="nn">xarray.core.utils</span> <span class="kn">import</span> <span class="n">FrozenDict</span>
 
-<span class="kn">from</span> <span class="nn">._tools</span> <span class="k">import</span> <span class="n">Bits</span><span class="p">,</span> <span class="n">IOBuffer</span><span class="p">,</span> <span class="n">NamedStruct</span><span class="p">,</span> <span class="n">open_as_needed</span><span class="p">,</span> <span class="n">zlib_decompress_all_frames</span>
-<span class="kn">from</span> <span class="nn">..package_tools</span> <span class="k">import</span> <span class="n">Exporter</span>
+<span class="kn">from</span> <span class="nn">._tools</span> <span class="kn">import</span> <span class="n">Bits</span><span class="p">,</span> <span class="n">IOBuffer</span><span class="p">,</span> <span class="n">NamedStruct</span><span class="p">,</span> <span class="n">open_as_needed</span><span class="p">,</span> <span class="n">zlib_decompress_all_frames</span>
+<span class="kn">from</span> <span class="nn">..package_tools</span> <span class="kn">import</span> <span class="n">Exporter</span>
 
 <span class="n">exporter</span> <span class="o">=</span> <span class="n">Exporter</span><span class="p">(</span><span class="nb">globals</span><span class="p">())</span>
 <span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -247,7 +248,7 @@
     <span class="n">mapper</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)),</span> <span class="n">names</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">lookup</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">mapper</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="s1">&#39;Unknown&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mapper</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="s1">&#39;UnknownValue&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">lookup</span>
 
 
@@ -299,7 +300,8 @@
                 <span class="s1">&#39;Sounder (9.71 micron)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sounder (7.43 micron)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sounder (7.02 micron)&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;Sounder (6.51 micron)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sounder (4.57 micron)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sounder (4.52 micron)&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;Sounder (4.45 micron)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sounder (4.13 micron)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sounder (3.98 micron)&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;Sounder (3.74 micron)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sounder (Visible)&#39;</span><span class="p">]</span>
+                <span class="c1"># Percent Normal TPW found empirically from Service Change Notice 20-03</span>
+                <span class="s1">&#39;Sounder (3.74 micron)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sounder (Visible)&#39;</span><span class="p">,</span> <span class="s1">&#39;Percent Normal TPW&#39;</span><span class="p">]</span>
 
     <span class="n">prod_desc_fmt</span> <span class="o">=</span> <span class="n">NamedStruct</span><span class="p">([(</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span>
                                  <span class="p">(</span><span class="s1">&#39;creating_entity&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">_name_lookup</span><span class="p">(</span><span class="n">crafts</span><span class="p">)),</span>
@@ -328,7 +330,7 @@
                            <span class="p">(</span><span class="s1">&#39;sat_height&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;ur_lat&#39;</span><span class="p">,</span> <span class="s1">&#39;3s&#39;</span><span class="p">,</span> <span class="n">_scaled_int</span><span class="p">),</span>
                            <span class="p">(</span><span class="s1">&#39;ur_lon&#39;</span><span class="p">,</span> <span class="s1">&#39;3s&#39;</span><span class="p">,</span> <span class="n">_scaled_int</span><span class="p">)],</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;Navigation&#39;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="GiniFile.__init__"><a class="viewcode-back" href="../../../api/generated/metpy.io.GiniFile.html#metpy.io.GiniFile.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<div class="viewcode-block" id="GiniFile.__init__"><a class="viewcode-back" href="../../../api/generated/metpy.io.GiniFile.html#metpy.io.GiniFile.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Create an instance of `GiniFile`.</span>
 
 <span class="sd">        Parameters</span>
@@ -416,7 +418,7 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="o">.</span><span class="n">at_end</span><span class="p">():</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">blob</span><span class="p">:</span>
                 <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;No data read yet, trying to decompress remaining data as an image.&#39;</span><span class="p">)</span>
-                <span class="kn">from</span> <span class="nn">matplotlib.image</span> <span class="k">import</span> <span class="n">imread</span>
+                <span class="kn">from</span> <span class="nn">matplotlib.image</span> <span class="kn">import</span> <span class="n">imread</span>
                 <span class="n">blob</span> <span class="o">=</span> <span class="p">(</span><span class="n">imread</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Leftover unprocessed data beyond EOF marker: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -434,7 +436,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">siteID</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a string representation of the product.&quot;&quot;&quot;</span>
         <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s1">&#39;: </span><span class="si">{0.creating_entity}</span><span class="s1"> </span><span class="si">{0.sector_id}</span><span class="s1"> </span><span class="si">{0.channel}</span><span class="s1">&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;Time: </span><span class="si">{0.datetime}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;Size: </span><span class="si">{0.ny}</span><span class="s1">x</span><span class="si">{0.nx}</span><span class="s1">&#39;</span><span class="p">,</span>
@@ -464,7 +466,7 @@
             <span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;standard_parallel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prod_desc2</span><span class="o">.</span><span class="n">lat_in</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
-                <span class="s1">&#39;Unhandled GINI Projection: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prod_desc</span><span class="o">.</span><span class="n">projection</span><span class="p">))</span>
+                <span class="sa">f</span><span class="s1">&#39;Unhandled GINI Projection: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prod_desc</span><span class="o">.</span><span class="n">projection</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="s1">&#39;projection&#39;</span><span class="p">,</span> <span class="n">Variable</span><span class="p">((),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span>
 
@@ -539,32 +541,6 @@
 
         <span class="k">return</span> <span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">x_var</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">y_var</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">lon_var</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="n">lat_var</span><span class="p">)]</span>
 
-    <span class="c1"># FIXME: Work around xarray &lt;=0.10.3 docstring for load angering sphinx</span>
-    <span class="c1"># That&#39;s the only reason this exists.</span>
-<div class="viewcode-block" id="GiniFile.load"><a class="viewcode-back" href="../../../api/generated/metpy.io.GiniFile.html#metpy.io.GiniFile.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Load the variables and attributes simultaneously.</span>
-
-<span class="sd">        A centralized loading function makes it easier to create</span>
-<span class="sd">        data stores that do automatic encoding/decoding.</span>
-
-<span class="sd">        For example::</span>
-
-<span class="sd">            class SuffixAppendingDataStore(AbstractDataStore):</span>
-
-<span class="sd">                def load(self):</span>
-<span class="sd">                    variables, attributes = AbstractDataStore.load(self)</span>
-<span class="sd">                    variables = {&#39;%s_suffix&#39; % k: v</span>
-<span class="sd">                                 for k, v in iteritems(variables)}</span>
-<span class="sd">                    attributes = {&#39;%s_suffix&#39; % k: v</span>
-<span class="sd">                                  for k, v in iteritems(attributes)}</span>
-<span class="sd">                    return variables, attributes</span>
-
-<span class="sd">        This function will be called anytime variables or attributes</span>
-<span class="sd">        are requested, so care should be taken to make sure its fast.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">()</span></div>
-
 <div class="viewcode-block" id="GiniFile.get_variables"><a class="viewcode-back" href="../../../api/generated/metpy.io.GiniFile.html#metpy.io.GiniFile.get_variables">[docs]</a>    <span class="k">def</span> <span class="nf">get_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get all variables in the file.</span>
 
@@ -599,15 +575,7 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">FrozenDict</span><span class="p">(</span><span class="n">satellite</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prod_desc</span><span class="o">.</span><span class="n">creating_entity</span><span class="p">,</span>
-                          <span class="n">sector</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prod_desc</span><span class="o">.</span><span class="n">sector_id</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="GiniFile.get_dimensions"><a class="viewcode-back" href="../../../api/generated/metpy.io.GiniFile.html#metpy.io.GiniFile.get_dimensions">[docs]</a>    <span class="k">def</span> <span class="nf">get_dimensions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the file&#39;s dimensions.</span>
-
-<span class="sd">        This is used by `xarray.open_dataset`.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">FrozenDict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prod_desc</span><span class="o">.</span><span class="n">nx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prod_desc</span><span class="o">.</span><span class="n">ny</span><span class="p">)</span></div></div>
+                          <span class="n">sector</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prod_desc</span><span class="o">.</span><span class="n">sector_id</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
@@ -622,8 +590,8 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, MetPy Developers. Development supported by National Science Foundation grants AGS-1344155, OAC-1740315, and AGS-1901712..
-      Last updated on Nov 14, 2019 at 01:28:52.
+        &copy; Copyright 2008-2020, MetPy Developers. Development supported by National Science Foundation grants AGS-1344155, OAC-1740315, and AGS-1901712..
+      Last updated on Oct 27, 2020 at 15:11:11.
 
     </p>
   </div>
@@ -639,9 +607,6 @@
   ga('send', 'pageview');
 </script>
 <script>var version_json_loc = "../../../../versions.json";</script>
-<p>Do you enjoy using MetPy?
-  <a href="https://saythanks.io/to/unidata" class="btn btn-neutral" title="Say Thanks!" accesskey="n">Say Thanks!</a>
-</p>
 
 
 </footer>
@@ -660,7 +625,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.11.1.post48+ga5068d5',
+            VERSION:'0.0.post586+gd5e1416',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -673,7 +638,8 @@
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
       <script type="text/javascript" src="../../../_static/language_data.js"></script>
       <script type="text/javascript" src="../../../_static/pop_ver.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../../../None"></script>
 
   
 

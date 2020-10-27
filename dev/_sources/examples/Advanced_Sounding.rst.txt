@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_examples_Advanced_Sounding.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_examples_Advanced_Sounding.py:
+        Click :ref:`here <sphx_glr_download_examples_Advanced_Sounding.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_Advanced_Sounding.py:
 
 
 =================
@@ -35,6 +37,7 @@ ambient profile and the parcel profile is colored as well.
 
 
 
+
 Upper air data can be obtained using the siphon package, but for this example we will use
 some of MetPy's sample data.
 
@@ -57,6 +60,7 @@ some of MetPy's sample data.
 
 
 
+
 We will pull the data out of the example dataset into individual variables and
 assign units.
 
@@ -70,6 +74,7 @@ assign units.
     wind_speed = df['speed'].values * units.knots
     wind_dir = df['direction'].values * units.degrees
     u, v = mpcalc.wind_components(wind_speed, wind_dir)
+
 
 
 
@@ -108,7 +113,7 @@ Create a new figure. The dimensions here give a good aspect ratio.
     skew.plot(p, prof, 'k', linewidth=2)
 
     # Shade areas of CAPE and CIN
-    skew.shade_cin(p, T, prof)
+    skew.shade_cin(p, T, prof, Td)
     skew.shade_cape(p, T, prof)
 
     # An example of a slanted line at constant T -- in this case the 0
@@ -126,7 +131,9 @@ Create a new figure. The dimensions here give a good aspect ratio.
 
 
 .. image:: /examples/images/sphx_glr_Advanced_Sounding_001.png
+    :alt: Advanced Sounding
     :class: sphx-glr-single-img
+
 
 
 
@@ -134,7 +141,7 @@ Create a new figure. The dimensions here give a good aspect ratio.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.818 seconds)
+   **Total running time of the script:** ( 0 minutes  0.605 seconds)
 
 
 .. _sphx_glr_download_examples_Advanced_Sounding.py:
@@ -147,13 +154,13 @@ Create a new figure. The dimensions here give a good aspect ratio.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: Advanced_Sounding.py <Advanced_Sounding.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: Advanced_Sounding.ipynb <Advanced_Sounding.ipynb>`
 

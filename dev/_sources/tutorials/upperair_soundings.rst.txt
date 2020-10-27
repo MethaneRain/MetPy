@@ -1,10 +1,12 @@
-.. note::
-    :class: sphx-glr-download-link-note
+.. only:: html
 
-    Click :ref:`here <sphx_glr_download_tutorials_upperair_soundings.py>` to download the full example code
-.. rst-class:: sphx-glr-example-title
+    .. note::
+        :class: sphx-glr-download-link-note
 
-.. _sphx_glr_tutorials_upperair_soundings.py:
+        Click :ref:`here <sphx_glr_download_tutorials_upperair_soundings.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_tutorials_upperair_soundings.py:
 
 
 ===========================
@@ -15,7 +17,7 @@ Upper air analysis is a staple of many synoptic and mesoscale analysis
 problems. In this tutorial we will gather weather balloon data, plot it,
 perform a series of thermodynamic calculations, and summarize the results.
 To learn more about the Skew-T diagram and its use in weather analysis and
-forecasting, checkout `this <https://homes.comet.ucar.edu/~alanbol/aws-tr-79-006.pdf>`_
+forecasting, checkout `this <http://www.pmarshwx.com/research/manuals/AF_skewt_manual.pdf>`_
 air weather service guide.
 
 
@@ -31,6 +33,7 @@ air weather service guide.
     from metpy.cbook import get_test_data
     from metpy.plots import Hodograph, SkewT
     from metpy.units import units
+
 
 
 
@@ -64,6 +67,7 @@ some of MetPy's sample data. This event is the Veterans Day tornado outbreak in 
 
 
 
+
 .. code-block:: default
 
 
@@ -76,6 +80,7 @@ some of MetPy's sample data. This event is the Veterans Day tornado outbreak in 
     wind_speed = df['speed'].values * units.knots
     wind_dir = df['direction'].values * units.degrees
     u, v = mpcalc.wind_components(wind_speed, wind_dir)
+
 
 
 
@@ -117,7 +122,8 @@ sounding. The MetPy calc module has many such calculations already implemented!
 
  .. code-block:: none
 
-    923.0963220202037 hectopascal 15.595422727825456 degC
+    923.0963261193399 hectopascal 15.59542279710887 degree_Celsius
+
 
 
 
@@ -167,7 +173,9 @@ These lines perform the following tasks:
 
 
 .. image:: /tutorials/images/sphx_glr_upperair_soundings_001.png
+    :alt: upperair soundings
     :class: sphx-glr-single-img
+
 
 
 
@@ -202,7 +210,7 @@ useful when performing further analysis on the Skew-T diagram. Often the
     skew.plot(p, parcel_prof, 'k', linewidth=2)
 
     # Shade areas of CAPE and CIN
-    skew.shade_cin(p, T, parcel_prof)
+    skew.shade_cin(p, T, parcel_prof, Td)
     skew.shade_cape(p, T, parcel_prof)
 
     # Plot a zero degree isotherm
@@ -220,7 +228,9 @@ useful when performing further analysis on the Skew-T diagram. Often the
 
 
 .. image:: /tutorials/images/sphx_glr_upperair_soundings_002.png
+    :alt: upperair soundings
     :class: sphx-glr-single-img
+
 
 
 
@@ -257,7 +267,7 @@ which are not drawn.
     skew.plot(p, parcel_prof, 'k', linewidth=2)
 
     # Shade areas of CAPE and CIN
-    skew.shade_cin(p, T, parcel_prof)
+    skew.shade_cin(p, T, parcel_prof, Td)
     skew.shade_cape(p, T, parcel_prof)
 
     # Plot a zero degree isotherm
@@ -282,7 +292,9 @@ which are not drawn.
 
 
 .. image:: /tutorials/images/sphx_glr_upperair_soundings_003.png
+    :alt: upperair soundings
     :class: sphx-glr-single-img
+
 
 
 
@@ -290,7 +302,7 @@ which are not drawn.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.888 seconds)
+   **Total running time of the script:** ( 0 minutes  1.444 seconds)
 
 
 .. _sphx_glr_download_tutorials_upperair_soundings.py:
@@ -303,13 +315,13 @@ which are not drawn.
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
      :download:`Download Python source code: upperair_soundings.py <upperair_soundings.py>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
      :download:`Download Jupyter notebook: upperair_soundings.ipynb <upperair_soundings.ipynb>`
 

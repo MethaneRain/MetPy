@@ -20,9 +20,10 @@ common meteorological tasks.
 
 .. only:: html
 
-    .. figure:: /tutorials/images/thumb/sphx_glr_unit_tutorial_thumb.png
+ .. figure:: /tutorials/images/thumb/sphx_glr_unit_tutorial_thumb.png
+     :alt: Units Tutorial
 
-        :ref:`sphx_glr_tutorials_unit_tutorial.py`
+     :ref:`sphx_glr_tutorials_unit_tutorial.py`
 
 .. raw:: html
 
@@ -40,9 +41,10 @@ common meteorological tasks.
 
 .. only:: html
 
-    .. figure:: /tutorials/images/thumb/sphx_glr_upperair_soundings_thumb.png
+ .. figure:: /tutorials/images/thumb/sphx_glr_upperair_soundings_thumb.png
+     :alt: Upper Air Sounding Tutorial
 
-        :ref:`sphx_glr_tutorials_upperair_soundings.py`
+     :ref:`sphx_glr_tutorials_upperair_soundings.py`
 
 .. raw:: html
 
@@ -60,9 +62,10 @@ common meteorological tasks.
 
 .. only:: html
 
-    .. figure:: /tutorials/images/thumb/sphx_glr_xarray_tutorial_thumb.png
+ .. figure:: /tutorials/images/thumb/sphx_glr_xarray_tutorial_thumb.png
+     :alt: xarray with MetPy Tutorial
 
-        :ref:`sphx_glr_tutorials_xarray_tutorial.py`
+     :ref:`sphx_glr_tutorials_xarray_tutorial.py`
 
 .. raw:: html
 
@@ -75,7 +78,7 @@ common meteorological tasks.
    /tutorials/xarray_tutorial
 .. raw:: html
 
-    <div style='clear:both'></div>
+    <div class="sphx-glr-clear"></div>
 
 
 
@@ -85,15 +88,15 @@ common meteorological tasks.
     :class: sphx-glr-footer-gallery
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-python
 
-    :download:`Download all examples in Python source code: tutorials_python.zip <//home/travis/build/Unidata/MetPy/docs/tutorials/tutorials_python.zip>`
+    :download:`Download all examples in Python source code: tutorials_python.zip </tutorials/tutorials_python.zip>`
 
 
 
-  .. container:: sphx-glr-download
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
 
-    :download:`Download all examples in Jupyter notebooks: tutorials_jupyter.zip <//home/travis/build/Unidata/MetPy/docs/tutorials/tutorials_jupyter.zip>`
+    :download:`Download all examples in Jupyter notebooks: tutorials_jupyter.zip </tutorials/tutorials_jupyter.zip>`
 
 
 .. only:: html

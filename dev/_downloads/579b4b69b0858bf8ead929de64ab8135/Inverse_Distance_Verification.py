@@ -28,11 +28,10 @@ Algorithmically:
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.spatial import cKDTree
-from scipy.spatial.distance import cdist
 
 from metpy.interpolate.geometry import dist_2
 from metpy.interpolate.points import barnes_point, cressman_point
-from metpy.interpolate.tools import calc_kappa
+from metpy.interpolate.tools import average_spacing, calc_kappa
 
 
 def draw_circle(ax, x, y, r, m, label):
@@ -83,8 +82,7 @@ x2, y2 = obs_tree.data[indices[1]].T
 barnes_dist = dist_2(sim_gridx[1], sim_gridy[1], x2, y2)
 barnes_obs = zp[indices[1]]
 
-ave_spacing = np.mean(cdist(list(zip(xp, yp)), list(zip(xp, yp))))
-kappa = calc_kappa(ave_spacing)
+kappa = calc_kappa(average_spacing(list(zip(xp, yp))))
 
 barnes_val = barnes_point(barnes_dist, barnes_obs, kappa)
 
@@ -103,8 +101,8 @@ ax.plot(x2, y2, 'ks', fillstyle='none', markersize=10, label='grid 1 matches')
 draw_circle(ax, sim_gridx[0], sim_gridy[0], m='k-', r=radius, label='grid 0 radius')
 draw_circle(ax, sim_gridx[1], sim_gridy[1], m='b-', r=radius, label='grid 1 radius')
 
-ax.annotate('grid 0: cressman {:.3f}'.format(cress_val), xy=(sim_gridx[0] + 2, sim_gridy[0]))
-ax.annotate('grid 1: barnes {:.3f}'.format(barnes_val), xy=(sim_gridx[1] + 2, sim_gridy[1]))
+ax.annotate(f'grid 0: cressman {cress_val:.3f}', xy=(sim_gridx[0] + 2, sim_gridy[0]))
+ax.annotate(f'grid 1: barnes {barnes_val:.3f}', xy=(sim_gridx[1] + 2, sim_gridy[1]))
 
 ax.set_aspect('equal', 'datalim')
 ax.legend()
@@ -116,8 +114,7 @@ ax.legend()
 # Plot the grid point, observations within radius of the grid point, their locations, and
 # their distances from the grid point.
 fig, ax = plt.subplots(1, 1, figsize=(15, 10))
-ax.annotate('grid 0: ({}, {})'.format(sim_gridx[0], sim_gridy[0]),
-            xy=(sim_gridx[0] + 2, sim_gridy[0]))
+ax.annotate(f'grid 0: ({sim_gridx[0]}, {sim_gridy[0]})', xy=(sim_gridx[0] + 2, sim_gridy[0]))
 ax.plot(sim_gridx[0], sim_gridy[0], '+', markersize=10)
 
 mx, my = obs_tree.data[indices[0]].T
@@ -130,8 +127,8 @@ for x, y, z in zip(mx, my, mz):
     xave = np.mean([sim_gridx[0], x])
     yave = np.mean([sim_gridy[0], y])
 
-    ax.annotate('distance: {}'.format(d), xy=(xave, yave))
-    ax.annotate('({}, {}) : {} F'.format(x, y, z), xy=(x, y))
+    ax.annotate(f'distance: {d}', xy=(xave, yave))
+    ax.annotate(f'({x}, {y}) : {z} F', xy=(x, y))
 
 ax.set_xlim(0, 80)
 ax.set_ylim(0, 80)
@@ -156,8 +153,7 @@ print('Metpy cressman value for grid 1:\t', val)
 # Now repeat for grid 1, except use barnes interpolation.
 
 fig, ax = plt.subplots(1, 1, figsize=(15, 10))
-ax.annotate('grid 1: ({}, {})'.format(sim_gridx[1], sim_gridy[1]),
-            xy=(sim_gridx[1] + 2, sim_gridy[1]))
+ax.annotate(f'grid 1: ({sim_gridx[1]}, {sim_gridy[1]})', xy=(sim_gridx[1] + 2, sim_gridy[1]))
 ax.plot(sim_gridx[1], sim_gridy[1], '+', markersize=10)
 
 mx, my = obs_tree.data[indices[1]].T
@@ -170,8 +166,8 @@ for x, y, z in zip(mx, my, mz):
     xave = np.mean([sim_gridx[1], x])
     yave = np.mean([sim_gridy[1], y])
 
-    ax.annotate('distance: {}'.format(d), xy=(xave, yave))
-    ax.annotate('({}, {}) : {} F'.format(x, y, z), xy=(x, y))
+    ax.annotate(f'distance: {d}', xy=(xave, yave))
+    ax.annotate(f'({x}, {y}) : {z} F', xy=(x, y))
 
 ax.set_xlim(40, 80)
 ax.set_ylim(40, 100)

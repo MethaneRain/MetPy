@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>supercell_composite &mdash; MetPy 0.11.1</title>
+  <title>supercell_composite &mdash; MetPy 0.0</title>
   
 
   
@@ -34,16 +34,20 @@
   
 
   
+    <link rel="stylesheet" href="../../_static/theme_override.css" type="text/css" />
+  
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
   
-    <link rel="stylesheet" href="../../_static/theme_override.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
   
 
   
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="MetPy 0.11.1" href="../../index.html"/>
+    <link rel="top" title="MetPy 0.0" href="../../index.html"/>
         <link rel="up" title="calc" href="metpy.calc.html"/>
         <link rel="next" title="surface_based_cape_cin" href="metpy.calc.surface_based_cape_cin.html"/>
         <link rel="prev" title="storm_relative_helicity" href="metpy.calc.storm_relative_helicity.html"/> 
@@ -81,7 +85,7 @@
                 
                   <div class="version-dropdown">
                     <select class="version-list" id="version-list">
-                      <option value=''>0.11.1</option>
+                      <option value=''>0.0</option>
                       
                         
                           <option value="../latest">latest</option>
@@ -121,13 +125,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../installguide.html">Installation Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../startingguide.html">Getting Started with MetPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../units.html">Unit Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Reference/API Examples</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://unidata.github.io/python-gallery/examples/index.html">Topical Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://unidata.github.io/python-training/gallery/gallery-home">Python Gallery (separate site)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="metpy.constants.html">constants</a></li>
 <li class="toctree-l2"><a class="reference internal" href="metpy.units.html">units</a></li>
-<li class="toctree-l2"><a class="reference internal" href="metpy.io.html">io</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metpy.io.html">metpy.io</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="metpy.calc.html">calc</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="metpy.calc.html#dry-thermodynamics">Dry Thermodynamics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="metpy.calc.html#moist-thermodynamics">Moist Thermodynamics</a></li>
@@ -139,12 +143,15 @@
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.el.html">el</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.lcl.html">lcl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.lfc.html">lfc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="metpy.calc.lifted_index.html">lifted_index</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.mixed_layer.html">mixed_layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="metpy.calc.mixed_layer_cape_cin.html">mixed_layer_cape_cin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.mixed_parcel.html">mixed_parcel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.most_unstable_cape_cin.html">most_unstable_cape_cin</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.most_unstable_parcel.html">most_unstable_parcel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.parcel_profile.html">parcel_profile</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.parcel_profile_with_lcl.html">parcel_profile_with_lcl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="metpy.calc.parcel_profile_with_lcl_as_dataset.html">parcel_profile_with_lcl_as_dataset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.significant_tornado.html">significant_tornado</a></li>
 <li class="toctree-l4"><a class="reference internal" href="metpy.calc.storm_relative_helicity.html">storm_relative_helicity</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">supercell_composite</a></li>
@@ -156,8 +163,8 @@
 <li class="toctree-l3"><a class="reference internal" href="metpy.calc.html#mathematical-functions">Mathematical Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="metpy.calc.html#apparent-temperature">Apparent Temperature</a></li>
 <li class="toctree-l3"><a class="reference internal" href="metpy.calc.html#standard-atmosphere">Standard Atmosphere</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metpy.calc.html#smoothing">Smoothing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="metpy.calc.html#other">Other</a></li>
-<li class="toctree-l3"><a class="reference internal" href="metpy.calc.html#deprecated">Deprecated</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="metpy.plots.html">plots</a></li>
@@ -246,9 +253,9 @@
             
   <div class="section" id="supercell-composite">
 <h1>supercell_composite<a class="headerlink" href="#supercell-composite" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="metpy.calc.supercell_composite">
-<code class="sig-prename descclassname">metpy.calc.</code><code class="sig-name descname">supercell_composite</code><span class="sig-paren">(</span><em class="sig-param">mucape</em>, <em class="sig-param">effective_storm_helicity</em>, <em class="sig-param">effective_shear</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metpy/calc/indices.html#supercell_composite"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metpy.calc.supercell_composite" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">metpy.calc.</code><code class="sig-name descname">supercell_composite</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mucape</span></em>, <em class="sig-param"><span class="n">effective_storm_helicity</span></em>, <em class="sig-param"><span class="n">effective_shear</span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metpy/calc/indices.html#supercell_composite"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metpy.calc.supercell_composite" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the supercell composite parameter.</p>
 <p>The supercell composite parameter is designed to identify
 environments favorable for the development of supercells,
@@ -263,13 +270,13 @@ capped at 1 when effective_shear exceeds 20 m/s.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>mucape</strong> (<em class="xref py py-obj">pint.Quantity</em>) – Most-unstable CAPE</p></li>
-<li><p><strong>effective_storm_helicity</strong> (<em class="xref py py-obj">pint.Quantity</em>) – Effective-layer storm-relative helicity</p></li>
-<li><p><strong>effective_shear</strong> (<em class="xref py py-obj">pint.Quantity</em>) – Effective bulk shear</p></li>
+<li><p><strong>mucape</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pint.Quantity</span></code>) – Most-unstable CAPE</p></li>
+<li><p><strong>effective_storm_helicity</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pint.Quantity</span></code>) – Effective-layer storm-relative helicity</p></li>
+<li><p><strong>effective_shear</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">pint.Quantity</span></code>) – Effective bulk shear</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><em class="xref py py-obj">pint.Quantity</em> – supercell composite</p>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pint.Quantity</span></code> – supercell composite</p>
 </dd>
 </dl>
 </dd></dl>
@@ -298,8 +305,8 @@ capped at 1 when effective_shear exceeds 20 m/s.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, MetPy Developers. Development supported by National Science Foundation grants AGS-1344155, OAC-1740315, and AGS-1901712..
-      Last updated on Nov 14, 2019 at 01:28:52.
+        &copy; Copyright 2008-2020, MetPy Developers. Development supported by National Science Foundation grants AGS-1344155, OAC-1740315, and AGS-1901712..
+      Last updated on Oct 27, 2020 at 15:11:11.
 
     </p>
   </div>
@@ -315,9 +322,6 @@ capped at 1 when effective_shear exceeds 20 m/s.</p>
   ga('send', 'pageview');
 </script>
 <script>var version_json_loc = "../../../versions.json";</script>
-<p>Do you enjoy using MetPy?
-  <a href="https://saythanks.io/to/unidata" class="btn btn-neutral" title="Say Thanks!" accesskey="n">Say Thanks!</a>
-</p>
 
 
 </footer>
@@ -336,7 +340,7 @@ capped at 1 when effective_shear exceeds 20 m/s.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.11.1.post48+ga5068d5',
+            VERSION:'0.0.post586+gd5e1416',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -349,7 +353,8 @@ capped at 1 when effective_shear exceeds 20 m/s.</p>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
       <script type="text/javascript" src="../../_static/language_data.js"></script>
       <script type="text/javascript" src="../../_static/pop_ver.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../../None"></script>
 
   
 
